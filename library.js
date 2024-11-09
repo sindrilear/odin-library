@@ -51,14 +51,18 @@ numberOfBooks = myLibrary.length;
       readDisplay.innerHTML = readString;
       cardRow.appendChild(readDisplay);
 
+      const buttonwrapper = document.createElement("div");
+      buttonwrapper.className = "buttonwrapper";
+      cardRow.appendChild(buttonwrapper);
+
       const deleteButton = document.createElement("button");
       deleteButton.setAttribute("onclick", `deleteItem(${i})`)
-      cardRow.appendChild(deleteButton);
+      buttonwrapper.appendChild(deleteButton);
       deleteButton.textContent = "Delete";
 
       const readButton = document.createElement("button");
       readButton.setAttribute("onclick", `toggleRead(${i})`)
-      cardRow.appendChild(readButton);
+      buttonwrapper.appendChild(readButton);
       readButton.textContent = "Toggle Read";
     }
   }
@@ -98,15 +102,19 @@ function createCard(n) {
   readDisplay.innerHTML = readString;
   cardRow.appendChild(readDisplay);
 
+  const buttonwrapper = document.createElement("div");
+  buttonwrapper.className = "buttonwrapper";
+  cardRow.appendChild(buttonwrapper);
+  
   const deleteButton = document.createElement("button");
   deleteButton.setAttribute("onclick", `deleteItem(${n})`)
-  cardRow.appendChild(deleteButton);
   deleteButton.textContent = "Delete";
+  buttonwrapper.appendChild(deleteButton);
 
   const readButton = document.createElement("button");
   readButton.setAttribute("onclick", `toggleRead(${n})`)
-  cardRow.appendChild(readButton);
   readButton.textContent = "Toggle Read";
+  buttonwrapper.appendChild(readButton);
 }
 
 const form = document.getElementById('form')
@@ -144,3 +152,15 @@ function toggleRead(id) {
     myLibrary[id].read = "Read"
   };
 }
+
+const showButton = document.getElementById("showDialog");
+const formDialog = document.getElementById("formDialog");
+const closeButton = document.getElementById("closeDialog");
+
+showButton.addEventListener("click", () => {
+  formDialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  formDialog.close();
+})

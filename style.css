@@ -6,10 +6,53 @@
 }
 
 .card {
+    display:flex;
+    flex-direction:column;
+    gap: 5px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-    padding: 40px;
+    padding: 20px;
+    margin: 0;
 }
 
 h3 {
     border-bottom: 1px solid;
 }
+
+html, body, p {
+    margin: 10px;
+}
+
+.buttonwrapper {
+    display:flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    background-color: #04AA6D; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+  }
+
+  .dialogbutton {
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    padding-bottom: 10px;
+  }
+
+  form {
+    display:flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .formbuttons {
+    display:flex;
+    gap:5px;
+  }
