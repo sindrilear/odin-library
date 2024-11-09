@@ -28,6 +28,7 @@ numberOfBooks = myLibrary.length;
 
       const cardRow = document.createElement("div");
       cardRow.className = "card";
+      cardRow.setAttribute("id", i);
       cardContainer.appendChild(cardRow);
 
       const heading = document.createElement("h3");
@@ -45,9 +46,20 @@ numberOfBooks = myLibrary.length;
       cardRow.appendChild(pagesDisplay);
 
       const readDisplay = document.createElement("p")
+      readDisplay.setAttribute("id", `read${i}`);
       readString = `<strong>Read / Not Read:</strong> ${read}`
       readDisplay.innerHTML = readString;
       cardRow.appendChild(readDisplay);
+
+      const deleteButton = document.createElement("button");
+      deleteButton.setAttribute("onclick", `deleteItem(${i})`)
+      cardRow.appendChild(deleteButton);
+      deleteButton.textContent = "Delete";
+
+      const readButton = document.createElement("button");
+      readButton.setAttribute("onclick", `toggleRead(${i})`)
+      cardRow.appendChild(readButton);
+      readButton.textContent = "Toggle Read";
     }
   }
 
@@ -63,6 +75,7 @@ function createCard(n) {
 
   const cardRow = document.createElement("div");
   cardRow.className = "card";
+  cardRow.setAttribute("id", n);
   cardContainer.appendChild(cardRow);
 
   const heading = document.createElement("h3");
@@ -81,8 +94,19 @@ function createCard(n) {
 
   const readDisplay = document.createElement("p")
   readString = `<strong>Read / Not Read:</strong> ${read}`
+  readDisplay.setAttribute("id", `read${n}`);
   readDisplay.innerHTML = readString;
   cardRow.appendChild(readDisplay);
+
+  const deleteButton = document.createElement("button");
+  deleteButton.setAttribute("onclick", `deleteItem(${n})`)
+  cardRow.appendChild(deleteButton);
+  deleteButton.textContent = "Delete";
+
+  const readButton = document.createElement("button");
+  readButton.setAttribute("onclick", `toggleRead(${n})`)
+  cardRow.appendChild(readButton);
+  readButton.textContent = "Toggle Read";
 }
 
 const form = document.getElementById('form')
@@ -100,3 +124,23 @@ form.addEventListener('submit', function(event) {
   numberOfBooks++;
   createCard(numberOfBooks - 1);
 });
+
+function deleteItem(id) {
+  element = document.getElementById(id);
+  element.remove();
+}
+
+function toggleRead(id) {
+  element = document.getElementById(`read${id}`)
+  let hasRead = myLibrary[id].read;
+  stringRead = "<strong>Read / Not Read:</strong> Not Read"
+  stringNotRead = "<strong>Read / Not Read:</strong> Read"
+
+  if (hasRead === "Read") {
+    element.innerHTML = stringRead;
+    myLibrary[id].read = "Not Read"
+  } else {
+    element.innerHTML = stringNotRead;
+    myLibrary[id].read = "Read"
+  };
+}
