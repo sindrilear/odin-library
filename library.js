@@ -1,16 +1,19 @@
 const myLibrary = [];
 
-function Book(title,author, pages, read) {
+class Book {
+  constructor(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function() {
-      info = title.concat(', ', author, ', ', pages, ', ', read)
-      return info
+  }
+
+  sayInfo() {
+    info = title.concat(', ', author, ', ', pages, ', ', read)
+    return info
   }
 }
-  
+
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295', 'Not read');
 const fellowship = new Book('The Fellowship of the Ring', 'J.R.R Tolkien', '423', 'Not read');
 myLibrary.push(theHobbit, fellowship)
