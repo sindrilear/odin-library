@@ -56,3 +56,7 @@ button {
     display:flex;
     gap:5px;
   }
+
+  input:out-of-range {
+    outline: red solid 2px;
+  }
